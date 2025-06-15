@@ -10,4 +10,10 @@ export const databaseConfig = (): TypeOrmModuleOptions => ({
   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
   synchronize: process.env.NODE_ENV === 'development',
   logging: process.env.NODE_ENV === 'development',
+  ssl: process.env.DB_HOST?.includes('ondigitalocean.com') ? { rejectUnauthorized: false } : false,
+  extra: process.env.DB_HOST?.includes('ondigitalocean.com') ? {
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  } : {},
 });
