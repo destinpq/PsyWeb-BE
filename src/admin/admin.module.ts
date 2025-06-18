@@ -9,6 +9,7 @@ import { ContactMessage } from '../contact/entities/contact-message.entity';
 import { Service } from '../services/entities/service.entity';
 import { DiagnosisModule } from '../diagnosis/diagnosis.module';
 import { WhatsAppModule } from '../whatsapp/whatsapp.module';
+import { CaseHistoryModule } from '../case-history/case-history.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { WhatsAppModule } from '../whatsapp/whatsapp.module';
     ]),
     DiagnosisModule,
     WhatsAppModule,
+    CaseHistoryModule,
   ],
   controllers: [AdminController],
   providers: [AdminService],

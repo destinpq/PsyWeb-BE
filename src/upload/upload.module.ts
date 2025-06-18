@@ -17,14 +17,35 @@ import { UploadService } from './upload.service';
         },
       }),
       fileFilter: (req, file, callback) => {
-        if (file.mimetype.match(/\/(jpg|jpeg|png|gif|webp)$/)) {
+        // Allow images, videos, and PDFs
+        const allowedMimeTypes = [
+          // Images
+          'image/jpeg',
+          'image/jpg', 
+          'image/png',
+          'image/gif',
+          'image/webp',
+          'image/svg+xml',
+          // Videos
+          'video/mp4',
+          'video/webm',
+          'video/ogg',
+          'video/avi',
+          'video/mov',
+          'video/wmv',
+          'video/flv',
+          // PDFs
+          'application/pdf',
+        ];
+
+        if (allowedMimeTypes.includes(file.mimetype)) {
           callback(null, true);
         } else {
-          callback(new Error('Only image files are allowed!'), false);
+          callback(new Error('Only image, video, and PDF files are allowed!'), false);
         }
       },
       limits: {
-        fileSize: 5 * 1024 * 1024, // 5MB
+        fileSize: 100 * 1024 * 1024, // 100MB maximum (for videos)
       },
     }),
   ],
