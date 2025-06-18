@@ -12,6 +12,10 @@ import { ContactModule } from './contact/contact.module';
 import { AppointmentsModule } from './appointments/appointments.module';
 import { EmailModule } from './email/email.module';
 import { UploadModule } from './upload/upload.module';
+import { SeedModule } from './seed/seed.module';
+import { AdminModule } from './admin/admin.module';
+import { DiagnosisModule } from './diagnosis/diagnosis.module';
+import { WhatsAppModule } from './whatsapp/whatsapp.module';
 
 @Module({
   imports: [
@@ -28,6 +32,10 @@ import { UploadModule } from './upload/upload.module';
     AuthModule,
     EmailModule,
     UploadModule,
+    SeedModule,
+    AdminModule,
+    DiagnosisModule,
+    WhatsAppModule,
   ],
   controllers: [AppController],
   providers: [AppService],

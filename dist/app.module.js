@@ -21,6 +21,10 @@ const contact_module_1 = require("./contact/contact.module");
 const appointments_module_1 = require("./appointments/appointments.module");
 const email_module_1 = require("./email/email.module");
 const upload_module_1 = require("./upload/upload.module");
+const seed_module_1 = require("./seed/seed.module");
+const admin_module_1 = require("./admin/admin.module");
+const diagnosis_module_1 = require("./diagnosis/diagnosis.module");
+const whatsapp_module_1 = require("./whatsapp/whatsapp.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -40,6 +44,10 @@ exports.AppModule = AppModule = __decorate([
             auth_module_1.AuthModule,
             email_module_1.EmailModule,
             upload_module_1.UploadModule,
+            seed_module_1.SeedModule,
+            admin_module_1.AdminModule,
+            diagnosis_module_1.DiagnosisModule,
+            whatsapp_module_1.WhatsAppModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

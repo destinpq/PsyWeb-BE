@@ -4,10 +4,19 @@ const core_1 = require("@nestjs/core");
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
 const app_module_1 = require("./app.module");
+const seed_service_1 = require("./seed/seed.service");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.enableCors({
-        origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+        origin: [
+            'http://localhost:3000',
+            'http://localhost:13001',
+            'http://localhost:13000',
+            'http://192.168.0.7:13000',
+            /^http:\/\/192\.168\.0\.\d+:13000$/,
+            'https://www.draksnksha.com',
+            'http://www.draksnksha.com',
+        ],
         credentials: true,
     });
     app.useGlobalPipes(new common_1.ValidationPipe({
@@ -16,6 +25,13 @@ async function bootstrap() {
         forbidNonWhitelisted: true,
     }));
     app.setGlobalPrefix('api');
+    if (process.argv.includes('--seed')) {
+        const seedService = app.get(seed_service_1.SeedService);
+        await seedService.seedAll();
+        console.log('🌱 Database seeded successfully!');
+        await app.close();
+        return;
+    }
     const config = new swagger_1.DocumentBuilder()
         .setTitle('Psychology Website API')
         .setDescription('API for Dr. Akanksha Agarwal Psychology Website')
@@ -24,9 +40,10 @@ async function bootstrap() {
         .build();
     const document = swagger_1.SwaggerModule.createDocument(app, config);
     swagger_1.SwaggerModule.setup('api/docs', app, document);
-    const port = process.env.PORT || 3001;
+    const port = process.env.PORT || 13001;
     await app.listen(port);
-    console.log(`Application is running on: http://localhost:${port}`);
+    console.log(`🚀 Application is running on: http://localhost:${port}`);
+    console.log(`📄 API documentation: http://localhost:${port}/api`);
     console.log(`Swagger documentation: http://localhost:${port}/api/docs`);
 }
 bootstrap();

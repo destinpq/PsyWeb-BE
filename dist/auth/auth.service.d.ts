@@ -1,7 +1,8 @@
 import { JwtService } from '@nestjs/jwt';
-import { UsersService } from '../users/users.service';
+import { Repository } from 'typeorm';
 import { LoginDto } from './dto/login.dto';
 import { User } from '../users/entities/user.entity';
+import { WhatsAppService } from '../whatsapp/whatsapp.service';
 export interface AuthResponse {
     access_token: string;
     user: {
@@ -13,9 +14,19 @@ export interface AuthResponse {
     };
 }
 export declare class AuthService {
-    private readonly usersService;
-    private readonly jwtService;
-    constructor(usersService: UsersService, jwtService: JwtService);
+    private usersRepository;
+    private jwtService;
+    private whatsappService;
+    private otpStorage;
+    constructor(usersRepository: Repository<User>, jwtService: JwtService, whatsappService: WhatsAppService);
     login(loginDto: LoginDto): Promise<AuthResponse>;
     validateUser(id: string): Promise<User | null>;
+    sendOTP(email: string): Promise<{
+        message: string;
+        phone: string;
+    }>;
+    verifyOTP(email: string, otp: string): Promise<{
+        access_token: string;
+        user: any;
+    }>;
 }

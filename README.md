@@ -64,7 +64,7 @@ A comprehensive NestJS backend API for Dr. Akanksha Agarwal's Psychology Website
    JWT_EXPIRES_IN=24h
 
    # Application Configuration
-   PORT=3001
+   PORT=13001
    NODE_ENV=development
 
    # CORS Configuration
@@ -126,7 +126,7 @@ A comprehensive NestJS backend API for Dr. Akanksha Agarwal's Psychology Website
 
 Access the interactive API documentation at:
 ```
-http://localhost:3001/api/docs
+http://localhost:13001/api/docs
 ```
 
 ## Database Schema

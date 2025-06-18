@@ -1,11 +1,11 @@
-import { UsersService } from '../users/users.service';
-import { ServicesService } from '../services/services.service';
-import { BlogService } from '../blog/blog.service';
+import { Repository } from 'typeorm';
+import { BlogPost } from '../blog/entities/blog-post.entity';
+import { User } from '../users/entities/user.entity';
 export declare class SeedService {
-    private readonly usersService;
-    private readonly servicesService;
-    private readonly blogService;
-    constructor(usersService: UsersService, servicesService: ServicesService, blogService: BlogService);
-    seedDatabase(): Promise<void>;
-    private createAdminUser;
+    private blogPostRepository;
+    private userRepository;
+    constructor(blogPostRepository: Repository<BlogPost>, userRepository: Repository<User>);
+    seedAll(): Promise<void>;
+    private seedDoctor;
+    private seedBlogPosts;
 }
