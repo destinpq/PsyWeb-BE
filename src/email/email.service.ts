@@ -44,9 +44,9 @@ export class EmailService {
               
               <p style="color: #6c757d; font-size: 12px; margin-bottom: 0;">
                 Best regards,<br>
-                Psychology Practice Team<br>
-                Email: dr.akanksha@example.com<br>
-                Phone: (555) 123-4567
+                Dr. Akanksha Agarwal's Mental Healthcare Clinic<br>
+                Email: dr.akankshagarwal@outlook.com<br>
+                Phone: +91 7013983168 | +91 8074790542
               </p>
             </div>
           </div>
@@ -104,9 +104,9 @@ export class EmailService {
               
               <p style="color: #6c757d; font-size: 12px; margin-bottom: 0;">
                 Best regards,<br>
-                Psychology Practice Team<br>
-                Email: dr.akanksha@example.com<br>
-                Phone: (555) 123-4567
+                Dr. Akanksha Agarwal's Mental Healthcare Clinic<br>
+                Email: dr.akankshagarwal@outlook.com<br>
+                Phone: +91 7013983168 | +91 8074790542
               </p>
             </div>
           </div>
@@ -166,9 +166,9 @@ export class EmailService {
               
               <p style="color: #6c757d; font-size: 12px; margin-bottom: 0;">
                 Best regards,<br>
-                Psychology Practice Team<br>
-                Email: dr.akanksha@example.com<br>
-                Phone: (555) 123-4567
+                Dr. Akanksha Agarwal's Mental Healthcare Clinic<br>
+                Email: dr.akankshagarwal@outlook.com<br>
+                Phone: +91 7013983168 | +91 8074790542
               </p>
             </div>
           </div>
@@ -217,9 +217,9 @@ export class EmailService {
               
               <p style="color: #6c757d; font-size: 12px; margin-bottom: 0;">
                 Best regards,<br>
-                Psychology Practice Team<br>
-                Email: dr.akanksha@example.com<br>
-                Phone: (555) 123-4567
+                Dr. Akanksha Agarwal's Mental Healthcare Clinic<br>
+                Email: dr.akankshagarwal@outlook.com<br>
+                Phone: +91 7013983168 | +91 8074790542
               </p>
             </div>
           </div>
