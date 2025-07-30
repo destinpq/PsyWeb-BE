@@ -6,14 +6,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { UsersModule } from '../users/users.module';
-import { WhatsAppModule } from '../whatsapp/whatsapp.module';
+
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { User } from '../users/entities/user.entity';
 
 @Module({
   imports: [
     UsersModule,
-    WhatsAppModule,
+
     TypeOrmModule.forFeature([User]),
     PassportModule,
     JwtModule.registerAsync({

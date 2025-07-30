@@ -6,7 +6,7 @@ import * as bcrypt from 'bcrypt';
 import { LoginDto } from './dto/login.dto';
 import { User } from '../users/entities/user.entity';
 import { JwtPayload } from './strategies/jwt.strategy';
-import { WhatsAppService } from '../whatsapp/whatsapp.service';
+
 
 export interface AuthResponse {
   access_token: string;
@@ -30,7 +30,7 @@ export class AuthService {
     @InjectRepository(User)
     private usersRepository: Repository<User>,
     private jwtService: JwtService,
-    private whatsappService: WhatsAppService,
+
   ) {}
 
   async login(loginDto: LoginDto): Promise<AuthResponse> {
@@ -103,23 +103,8 @@ export class AuthService {
     // Store OTP
     this.otpStorage.set(email, { otp, expiresAt, phone: phoneNumber });
 
-    // Send OTP via WhatsApp
-    const message = `🔐 Your login OTP is: ${otp}
-
-This OTP will expire in 5 minutes.
-
-Dr. Akanksha Psychology Clinic`;
-
-    try {
-      await this.whatsappService.sendMessage({
-        to: phoneNumber,
-        message: message,
-        type: 'text'
-      });
-    } catch (error) {
-      console.error('Failed to send WhatsApp OTP:', error);
-      throw new UnauthorizedException('Failed to send OTP');
-    }
+    // Log OTP for development (replace with SMS/Email service in production)
+    console.log(`🔐 OTP for ${email} (${phoneNumber}): ${otp}`);
 
     return {
       message: 'OTP sent successfully',

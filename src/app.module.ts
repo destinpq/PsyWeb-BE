@@ -15,7 +15,7 @@ import { UploadModule } from './upload/upload.module';
 import { SeedModule } from './seed/seed.module';
 import { AdminModule } from './admin/admin.module';
 import { DiagnosisModule } from './diagnosis/diagnosis.module';
-import { WhatsAppModule } from './whatsapp/whatsapp.module';
+
 import { CaseHistoryModule } from './case-history/case-history.module';
 
 @Module({
@@ -36,7 +36,7 @@ import { CaseHistoryModule } from './case-history/case-history.module';
     SeedModule,
     AdminModule,
     DiagnosisModule,
-    WhatsAppModule,
+
     CaseHistoryModule,
   ],
   controllers: [AppController],

@@ -14,7 +14,7 @@ import { AppointmentStatus } from '../appointments/entities/appointment.entity';
 import { MessageStatus } from '../contact/entities/contact-message.entity';
 import { DiagnosisService, CreateDiagnosisDto, UpdateDiagnosisDto } from '../diagnosis/diagnosis.service';
 import { DiagnosisStatus } from '../diagnosis/entities/diagnosis.entity';
-import { WhatsAppService, AppointmentReminderData, AnalysisReportData } from '../whatsapp/whatsapp.service';
+
 import { CaseHistoryService } from '../case-history/case-history.service';
 import { CreateCaseHistoryDto } from '../case-history/dto/create-case-history.dto';
 import { UpdateCaseHistoryDto } from '../case-history/dto/update-case-history.dto';
@@ -26,7 +26,7 @@ export class AdminController {
   constructor(
     private readonly adminService: AdminService,
     private readonly diagnosisService: DiagnosisService,
-    private readonly whatsappService: WhatsAppService,
+
     private readonly caseHistoryService: CaseHistoryService,
   ) {}
 
@@ -214,38 +214,5 @@ export class AdminController {
     return this.diagnosisService.getDiagnosisStats();
   }
 
-  // WhatsApp Messaging
-  @Post('whatsapp/appointment-reminder')
-  async sendAppointmentReminder(
-    @Body('phoneNumber') phoneNumber: string,
-    @Body('reminderData') reminderData: AppointmentReminderData,
-  ) {
-    return this.whatsappService.sendAppointmentReminder(phoneNumber, reminderData);
-  }
 
-  @Post('whatsapp/analysis-report')
-  async sendAnalysisReport(
-    @Body('phoneNumber') phoneNumber: string,
-    @Body('reportData') reportData: AnalysisReportData,
-  ) {
-    return this.whatsappService.sendAnalysisReport(phoneNumber, reportData);
-  }
-
-  @Post('whatsapp/custom-message')
-  async sendCustomMessage(
-    @Body('phoneNumber') phoneNumber: string,
-    @Body('message') message: string,
-  ) {
-    return this.whatsappService.sendCustomMessage(phoneNumber, message);
-  }
-
-  @Post('whatsapp/bulk-reminders')
-  async sendBulkReminders(
-    @Body('appointments') appointments: Array<{
-      phoneNumber: string;
-      reminderData: AppointmentReminderData;
-    }>,
-  ) {
-    return this.whatsappService.sendBulkAppointmentReminders(appointments);
-  }
 } 
